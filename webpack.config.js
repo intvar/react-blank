@@ -1,4 +1,3 @@
-/* eslint import/no-extraneous-dependencies:0 */
 const { join } = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const webpack = require('webpack');
@@ -18,7 +17,14 @@ module.exports = {
   ],
   module: {
     rules: [
-      { test: /\.jsx?$/, use: 'babel-loader' },
+      {
+        test: /\.jsx?$/,
+        use: 'babel-loader',
+        exclude: /node_modules/,
+      },
     ],
+  },
+  resolve: {
+    extensions: ['.js', '.jsx'],
   },
 };
