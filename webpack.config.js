@@ -7,7 +7,7 @@ const mode = process.env.NODE_ENV === 'production' ? 'production' : 'development
 
 module.exports = {
   mode,
-  entry: './src/index.js',
+  entry: './src/index.tsx',
   output: {
     filename: 'bundle.js',
     path: join(__dirname, 'build'),
@@ -26,13 +26,8 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.jsx?$/,
-        use: {
-          loader: 'babel-loader',
-          options: {
-            cacheDirectory: true,
-          },
-        },
+        test: /\.tsx?$/,
+        use: 'ts-loader',
         exclude: /node_modules/,
       },
       {
@@ -45,7 +40,7 @@ module.exports = {
     ],
   },
   resolve: {
-    extensions: ['.js', '.jsx'],
+    extensions: ['.ts', '.tsx', '.js'],
   },
   devtool: 'source-map',
 };
